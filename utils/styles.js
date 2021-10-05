@@ -36,8 +36,9 @@ const useStyles = makeStyles({
     marginBottom: 10,
   },
 
-  divi: {
-    display: 'inline',
+  form: {
+    maxWidth: 800,
+    margin: '0 auto',
   },
 
   /*loremText: {
