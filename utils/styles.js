@@ -41,6 +41,11 @@ const useStyles = makeStyles({
     margin: '0 auto',
   },
 
+  navbarButton: {
+    color: 'white',
+    textTransform: 'initial',
+  },
+
   /*loremText: {
     marginLeft: '15%',
     fontWeight: 'bold',
