@@ -137,7 +137,7 @@ export default function Layout({ title, description, children }) {
                 </>
               ) : (
                 <NextLink href="/login" passHref>
-                  <Link>login</Link>
+                  <Link>Login</Link>
                 </NextLink>
               )}
             </div>
@@ -145,13 +145,6 @@ export default function Layout({ title, description, children }) {
         </AppBar>
         <Container className={classes.main}>{children}</Container>
         <footer className={classes.footer}>
-          <div style={{ width: '100%' }}>
-            <Box sx={{ display: 'flex', p: 1 }}>
-              <Box sx={{ p: 1 }}>Item 1</Box>
-              <Box sx={{ p: 1 }}>Item 2</Box>
-              <Box sx={{ p: 1 }}>Item 3</Box>
-            </Box>
-          </div>
           <Typography>© 2021 manuka.Store</Typography>
         </footer>
       </ThemeProvider>
