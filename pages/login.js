@@ -26,7 +26,7 @@ export default function Login() {
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const router = useRouter();
-  const { redirect } = router.query; // login?redirect=/shipping
+  const { redirect } = router.query; //login?redirect=/shipping
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   useEffect(() => {
