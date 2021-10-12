@@ -46,6 +46,10 @@ const useStyles = makeStyles({
     textTransform: 'initial',
   },
 
+  transparentBackgroud: {
+    backgroundColor: 'transparent',
+  },
+
   /*loremText: {
     marginLeft: '15%',
     fontWeight: 'bold',
