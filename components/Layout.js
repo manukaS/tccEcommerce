@@ -11,7 +11,6 @@ import {
   ThemeProvider,
   CssBaseline,
   Switch,
-  Box,
   Badge,
   Button,
   Menu,

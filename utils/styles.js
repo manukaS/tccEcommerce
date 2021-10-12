@@ -21,6 +21,8 @@ const useStyles = makeStyles({
 
   main: {
     minHeight: '80vh',
+    //marginLeft: 0,
+    //padding: 0,
   },
 
   footer: {
