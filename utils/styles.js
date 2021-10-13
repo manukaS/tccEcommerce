@@ -52,6 +52,10 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent',
   },
 
+  error: {
+    color: '#f04040',
+  },
+
   /*loremText: {
     marginLeft: '15%',
     fontWeight: 'bold',
