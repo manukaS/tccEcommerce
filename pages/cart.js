@@ -23,8 +23,11 @@ import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import { useRouter } from 'next/router';
+import useStyles from '../utils/styles';
+import DeleteForeverOutlined from '@material-ui/icons/DeleteForeverOutlined';
 
 function CartScreen() {
+  const classes = useStyles();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -50,11 +53,11 @@ function CartScreen() {
 
   return (
     <Layout title="Shopping Cart">
-      <Typography component="h1" variant="h1">
+      <Typography component="h1" variant="h1" className={classes.marginPages}>
         Shopping Cart
       </Typography>
       {cartItems.length === 0 ? (
-        <div>
+        <div className={classes.marginPages}>
           Cart is empty.
           <NextLink href="/" passHref>
             <Link>Go Shopping</Link>
@@ -62,7 +65,7 @@ function CartScreen() {
         </div>
       ) : (
         <Grid container space={1}>
-          <Grid item md={9} xs={12}>
+          <Grid item md={9} xs={12} className={classes.marginPages}>
             <TableContainer>
               <Table>
                 <TableHead>
@@ -118,7 +121,7 @@ function CartScreen() {
                           color="primary"
                           onClick={() => removeItemHandler(item)}
                         >
-                          x
+                          <DeleteForeverOutlined fontSize="medium" />
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -127,7 +130,7 @@ function CartScreen() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid md={3} xs={12}>
+          <Grid md={3} xs={12} className={classes.marginPages}>
             <Card>
               <List>
                 <ListItem>

@@ -89,10 +89,10 @@ function PlaceOrder() {
   return (
     <Layout title="Place Order">
       <CheckoutWizard activeStep={3}></CheckoutWizard>
-      <Typography component="h1" variant="h1">
+      <Typography component="h1" variant="h1" className={classes.marginPages}>
         Place Order
       </Typography>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} className={classes.marginPages}>
         <Grid item md={9} xs={12}>
           <Card className={classes.section}>
             <List>
@@ -173,7 +173,7 @@ function PlaceOrder() {
             </List>
           </Card>
         </Grid>
-        <Grid item md={3} xs={12}>
+        <Grid item md={3} xs={12} className={classes.marginPages}>
           <Card className={classes.section}>
             <List>
               <ListItem>

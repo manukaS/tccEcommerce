@@ -42,7 +42,7 @@ export default function Layout({ title, description, children }) {
       h3: {
         fontFamily: 'Poppins',
         fontSize: '1rem',
-        fontWeight: 400,
+        fontWeight: 500,
       },
       body1: {
         fontWeight: 'normal',

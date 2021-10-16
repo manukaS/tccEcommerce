@@ -93,7 +93,7 @@ function Order({ params }) {
   return (
     <Layout title={`Order ${orderId}`}>
       <CheckoutWizard activeStep={3}></CheckoutWizard>
-      <Typography component="h1" variant="h1">
+      <Typography component="h1" variant="h1" className={classes.marginPages}>
         Order {orderId}
       </Typography>
       {loading ? (
@@ -101,7 +101,7 @@ function Order({ params }) {
       ) : error ? (
         <Typography className={classes.error}>{error}</Typography>
       ) : (
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className={classes.marginPages}>
           <Grid item md={9} xs={12}>
             <Card className={classes.section}>
               <List>
@@ -191,7 +191,7 @@ function Order({ params }) {
               </List>
             </Card>
           </Grid>
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={12} className={classes.marginPages}>
             <Card className={classes.section}>
               <List>
                 <ListItem>

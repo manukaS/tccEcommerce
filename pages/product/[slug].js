@@ -42,13 +42,17 @@ export default function ProductScreen(props) {
       <div className={classes.section}>
         <NextLink href="/" passHref>
           <Link>
-            <Typography component="h2" variant="h2">
+            <Typography
+              component="h2"
+              variant="h2"
+              className={classes.marginPages}
+            >
               back to products
             </Typography>
           </Link>
         </NextLink>
       </div>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} className={classes.marginPages}>
         <Grid item md={6} xs={12}>
           <Image
             src={product.image}
@@ -58,7 +62,7 @@ export default function ProductScreen(props) {
             layout="responsive"
           ></Image>
         </Grid>
-        <Grid item md={3} xs={12}>
+        <Grid item md={3} xs={12} className={classes.marginPages}>
           <List>
             <ListItem>
               <Typography component="h1" variant="h1">
@@ -87,7 +91,7 @@ export default function ProductScreen(props) {
             </ListItem>
           </List>
         </Grid>
-        <Grid item md={3} xs={12}>
+        <Grid item md={3} xs={12} className={classes.marginPages}>
           <Card>
             <List>
               <ListItem>

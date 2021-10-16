@@ -17,8 +17,8 @@ const data = {
   ],
   products: [
     {
-      name: 'White Sweatshirt',
-      slug: 'white-sweatshirt',
+      name: 'Black Shirt',
+      slug: 'black-shirt',
       category: 'Shirts',
       image: '/images/shirt1.jpg',
       price: 200,
@@ -29,8 +29,8 @@ const data = {
       description: 'A popular shirt',
     },
     {
-      name: 'White Sweatshirt2',
-      slug: 'white-sweatshirt2',
+      name: 'White Shirt',
+      slug: 'white-shirt',
       category: 'Shirts',
       image: '/images/shirt2.jpg',
       price: 150,
@@ -41,8 +41,8 @@ const data = {
       description: 'A popular shirt',
     },
     {
-      name: 'White Sweatshirt3',
-      slug: 'white-sweatshirt3',
+      name: 'Black Shirt 2',
+      slug: 'black-shirt-2',
       category: 'Shirts',
       image: '/images/shirt3.jpg',
       price: 100,
@@ -53,8 +53,8 @@ const data = {
       description: 'A popular shirt',
     },
     {
-      name: 'White Sweatshirt4',
-      slug: 'white-sweatshirt4',
+      name: 'White Shirt 2',
+      slug: 'white-shirt-2',
       category: 'Pants',
       image: '/images/pants1.jpg',
       price: 90,
@@ -65,8 +65,8 @@ const data = {
       description: 'Smart looking pants',
     },
     {
-      name: 'White Sweatshirt5',
-      slug: 'white-sweatshirt5',
+      name: 'Black Shirt 3',
+      slug: 'black-shirt-3',
       category: 'Pants',
       image: '/images/pants2.jpg',
       price: 95,
@@ -77,8 +77,8 @@ const data = {
       description: 'A popular pants',
     },
     {
-      name: 'White Sweatshirt6',
-      slug: 'white-sweatshirt6',
+      name: 'White Shirt 3',
+      slug: 'white-shirt-3',
       category: 'Pants',
       image: '/images/pants3.jpg',
       price: 100,

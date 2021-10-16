@@ -16,6 +16,8 @@ import Layout from '../components/Layout';
 import Product from '../models/Product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
+import useStyles from '../utils/styles';
+import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
 
 export default function Home(props) {
   const router = useRouter();
@@ -32,19 +34,20 @@ export default function Home(props) {
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
     router.push('/cart');
   };
+  const classes = useStyles();
   return (
     <Layout>
       <div>
         <Typography component="h1" variant="h1">
-          <h1>Lorem</h1>
+          <h1 className={classes.loremText}>Lorem</h1>
         </Typography>
       </div>
-      <div>
+      <div className={classes.ourProducts}>
         <Typography component="h1" variant="h1">
-          <h1>Our Products</h1>
+          <h1 className={classes.ourProductsText}>Our Products</h1>
         </Typography>
       </div>
-      <div>
+      <div className={classes.marginCards}>
         <Grid container spacing={3}>
           {products.map((product) => (
             <Grid item md={4} key={product.name}>
@@ -57,24 +60,28 @@ export default function Home(props) {
                       title={product.name}
                     ></CardMedia>
                     <CardContent>
-                      <Typography component="h3" variant="h3">
-                        {product.name}
-                      </Typography>
+                      <CardActions className={classes.align}>
+                        <div>
+                          <Typography component="h3" variant="h3">
+                            {product.name}
+                          </Typography>
+                        </div>
+                        <div>
+                          <Typography component="h3" variant="h3">
+                            R$ {product.price}
+                          </Typography>
+                        </div>
+                      </CardActions>
                     </CardContent>
                   </CardActionArea>
                 </NextLink>
-                <CardActions>
-                  <Typography component="h3" variant="h3">
-                    R$ {product.price}
-                  </Typography>
+                <CardActions className={classes.buttonAlign}>
                   <Button
                     size="small"
                     color="primary"
                     onClick={() => addToCartHandler(product)}
                   >
-                    <Typography component="h3" variant="h3">
-                      Add to cart
-                    </Typography>
+                    <AddShoppingCart fontSize="large" />
                   </Button>
                 </CardActions>
               </Card>
@@ -82,9 +89,9 @@ export default function Home(props) {
           ))}
         </Grid>
       </div>
-      <div>
+      <div className={classes.contactUs}>
         <Typography component="h1" variant="h1">
-          <h1>Contact Us</h1>
+          <h1 className={classes.contactUsText}>Contact Us</h1>
         </Typography>
       </div>
     </Layout>
