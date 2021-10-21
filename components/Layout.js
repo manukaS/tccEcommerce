@@ -44,8 +44,10 @@ export default function Layout({ title, description, children }) {
         fontSize: '1rem',
         fontWeight: 500,
       },
-      body1: {
-        fontWeight: 'normal',
+      h4: {
+        fontFamily: 'Poppins',
+        fontSize: '1rem',
+        fontWeight: 500,
       },
     },
     palette: {
@@ -143,8 +145,11 @@ export default function Layout({ title, description, children }) {
           </Toolbar>
         </AppBar>
         <Container className={classes.main}>{children}</Container>
-        <footer className={classes.footer}>
-          <Typography>© 2021 manuka.Store</Typography>
+        <hr color="#64E294" className={classes.lineFooter} />
+        <footer>
+          <Typography className={classes.footer}>
+            © 2021 manuka.Store
+          </Typography>
         </footer>
       </ThemeProvider>
     </div>

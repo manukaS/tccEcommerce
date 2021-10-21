@@ -1,11 +1,14 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
+  //TOOLBAR
+
   navbar: {
     backgroundColor: '#36465F',
     '& a': {
       color: '#FFFFFF',
       marginLeft: 10,
+      marginRight: 10,
     },
   },
 
@@ -19,6 +22,8 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
 
+  //MAIN PAGE
+
   main: {
     minHeight: '80vh',
     marginLeft: 0,
@@ -26,23 +31,31 @@ const useStyles = makeStyles({
     maxWidth: '100%',
   },
 
+  //FOOTER
+
   footer: {
     textAlign: 'center',
     color: '#d3d3d3',
     minHeight: '15vh',
     backgroundColor: 'black',
-    marginTop: 0,
+    padding: '10px',
   },
+
+  //SECTIONS
 
   section: {
     marginTop: 10,
     marginBottom: 10,
   },
 
+  //FORM LOGIN/REGISTER/SHIPPING ADDRESS
+
   form: {
     maxWidth: 800,
     margin: '0 auto',
   },
+
+  //NAVBAR
 
   navbarButton: {
     color: 'white',
@@ -50,25 +63,23 @@ const useStyles = makeStyles({
     margin: '10px',
   },
 
+  //CHECKOUT WIZARD
+
   transparentBackgroud: {
     backgroundColor: 'transparent',
   },
+
+  //ERROR
 
   error: {
     color: '#f04040',
   },
 
+  //MARGIN PAGES
+
   marginPages: {
     marginLeft: '10%',
     marginRight: '10%',
-  },
-
-  cartCss: {
-    marginTop: '15px',
-  },
-
-  abcd: {
-    marginTop: '10px',
   },
 
   //CARDS
@@ -87,9 +98,9 @@ const useStyles = makeStyles({
 
   buttonAlign: {
     justifyContent: 'end',
-
     paddingTop: '0px',
   },
+
   //LOREM
 
   loremText: {
@@ -114,7 +125,15 @@ const useStyles = makeStyles({
 
   contactUs: {
     backgroundColor: '#939393',
-    minHeight: '35vh',
+    minHeight: '45vh',
+  },
+
+  formMargin: {
+    marginTop: '-10px',
+    marginLeft: '30%',
+    marginRight: '30%',
+    padding: '10px',
+    textAlign: 'center',
   },
 
   contactUsText: {
@@ -128,6 +147,11 @@ const useStyles = makeStyles({
 
   lineFooter: {
     margin: 0,
+  },
+
+  //PAYPAL BUTTONS
+  fullWidth: {
+    width: '100%',
   },
 });
 

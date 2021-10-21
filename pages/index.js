@@ -6,6 +6,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  TextField,
   Typography,
 } from '@material-ui/core';
 import axios from 'axios';
@@ -93,6 +94,24 @@ export default function Home(props) {
         <Typography component="h1" variant="h1">
           <h1 className={classes.contactUsText}>Contact Us</h1>
         </Typography>
+        <form>
+          <div className={classes.formMargin}>
+            <TextField label="Full Name" fullWidth autoComplete="none" />
+            <TextField label="Email" fullWidth autoComplete="none" />
+            <TextField
+              label="Message"
+              fullWidth
+              multiline
+              rows={5}
+              autoComplete="none"
+            />
+          </div>
+          <div className={classes.formMargin}>
+            <Button type="submit" variant="contained" color="primary">
+              <Typography variant="h4"> Submit </Typography>
+            </Button>
+          </div>
+        </form>
       </div>
     </Layout>
   );
