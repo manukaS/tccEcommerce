@@ -29,7 +29,7 @@ export default function Home(props) {
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
+      window.alert('Este produto está fora de estoque!');
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -45,7 +45,7 @@ export default function Home(props) {
       </div>
       <div className={classes.ourProducts}>
         <Typography component="h1" variant="h1">
-          <h1 className={classes.ourProductsText}>Our Products</h1>
+          <h1 className={classes.ourProductsText}>Produtos</h1>
         </Typography>
       </div>
       <div className={classes.marginCards}>
@@ -92,14 +92,14 @@ export default function Home(props) {
       </div>
       <div className={classes.contactUs}>
         <Typography component="h1" variant="h1">
-          <h1 className={classes.contactUsText}>Contact Us</h1>
+          <h1 className={classes.contactUsText}>Contato</h1>
         </Typography>
         <form>
           <div className={classes.formMargin}>
-            <TextField label="Full Name" fullWidth autoComplete="none" />
+            <TextField label="Nome" fullWidth autoComplete="none" />
             <TextField label="Email" fullWidth autoComplete="none" />
             <TextField
-              label="Message"
+              label="Mensagem"
               fullWidth
               multiline
               rows={5}
@@ -108,7 +108,7 @@ export default function Home(props) {
           </div>
           <div className={classes.formMargin}>
             <Button type="submit" variant="contained" color="primary">
-              <Typography variant="h4"> Submit </Typography>
+              <Typography variant="h4">Enviar</Typography>
             </Button>
           </div>
         </form>

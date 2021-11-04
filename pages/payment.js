@@ -37,7 +37,7 @@ export default function Payment() {
     closeSnackbar();
     e.preventDefault();
     if (!paymentMethod) {
-      enqueueSnackbar('Payment method is required', { variant: 'error' });
+      enqueueSnackbar('Seleciona o Método de Pagamento', { variant: 'error' });
     } else {
       dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethod });
       Cookies.set('paymentMethod', paymentMethod);
@@ -45,11 +45,11 @@ export default function Payment() {
     }
   };
   return (
-    <Layout title="Payment Method">
+    <Layout title="Método de Pagamento">
       <CheckoutWizard activeStep={2}></CheckoutWizard>
       <form className={classes.form} onSubmit={submitHandler}>
         <Typography component="h1" variant="h1">
-          Payment Method
+          Selecione o Método de Pagamento
         </Typography>
         <List>
           <ListItem>
@@ -70,7 +70,7 @@ export default function Payment() {
           </ListItem>
           <ListItem>
             <Button fullWidth type="submit" variant="contained" color="primary">
-              Continue
+              Continuar
             </Button>
           </ListItem>
           <ListItem>
@@ -80,7 +80,7 @@ export default function Payment() {
               variant="contained"
               onClick={() => router.push('/shipping')}
             >
-              Back
+              Voltar
             </Button>
           </ListItem>
         </List>

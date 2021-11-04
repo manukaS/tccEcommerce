@@ -54,11 +54,11 @@ export default function Shipping() {
     router.push('/payment');
   };
   return (
-    <Layout title="Shipping Address">
+    <Layout title="Endereço de Entrega">
       <CheckoutWizard activeStep={1} />
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Shipping Address
+          Dados para Entrega
         </Typography>
         <List>
           <ListItem>
@@ -68,20 +68,20 @@ export default function Shipping() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="fullName"
-                  label="Full Name"
+                  label="Nome Completo"
                   error={Boolean(errors.fullName)}
                   helperText={
                     errors.fullName
                       ? errors.fullName.type === 'minLength'
-                        ? 'Full Name length is more than 1'
-                        : 'Full Name is required'
+                        ? 'Deve conter mais que dois caracteres!'
+                        : 'Informe seu Nome Completo!'
                       : ''
                   }
                   {...field}
@@ -96,20 +96,20 @@ export default function Shipping() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="address"
-                  label="Address"
+                  label="Endereço"
                   error={Boolean(errors.address)}
                   helperText={
                     errors.address
                       ? errors.address.type === 'minLength'
-                        ? 'Address length is more than 1'
-                        : 'Address is required'
+                        ? 'Deve conter mais que dois caracteres!'
+                        : 'Informe seu Endereço!'
                       : ''
                   }
                   {...field}
@@ -124,20 +124,20 @@ export default function Shipping() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="city"
-                  label="City"
+                  label="Cidade"
                   error={Boolean(errors.city)}
                   helperText={
                     errors.city
                       ? errors.city.type === 'minLength'
-                        ? 'City length is more than 1'
-                        : 'City is required'
+                        ? 'Deve conter mais que dois caracteres!'
+                        : 'Informe sua Cidade!'
                       : ''
                   }
                   {...field}
@@ -152,20 +152,20 @@ export default function Shipping() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="postalCode"
-                  label="Postal Code"
+                  label="Código Postal"
                   error={Boolean(errors.postalCode)}
                   helperText={
                     errors.postalCode
                       ? errors.postalCode.type === 'minLength'
-                        ? 'Postal Code length is more than 1'
-                        : 'Postal Code is required'
+                        ? 'Deve conter mais que dois caracteres!'
+                        : 'Informe seu Código Postal!'
                       : ''
                   }
                   {...field}
@@ -180,20 +180,20 @@ export default function Shipping() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="country"
-                  label="Country"
+                  label="País"
                   error={Boolean(errors.country)}
                   helperText={
                     errors.country
                       ? errors.country.type === 'minLength'
-                        ? 'Country length is more than 1'
-                        : 'Country is required'
+                        ? 'Deve conter mais que dois caracteres!'
+                        : 'Informe seu País!'
                       : ''
                   }
                   {...field}
@@ -203,7 +203,7 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Continue
+              Continuar
             </Button>
           </ListItem>
         </List>

@@ -144,7 +144,7 @@ function Order({ params }) {
           }
         );
         dispatch({ type: 'PAY_SUCCESS', payload: data });
-        enqueueSnackbar('Order is paid', { variant: 'success' });
+        enqueueSnackbar('O pedido foi pago!', { variant: 'success' });
       } catch (err) {
         dispatch({ type: 'PAY_FAIL', payload: getError(err) });
         enqueueSnackbar(getError(err), { variant: 'error' });
@@ -157,22 +157,22 @@ function Order({ params }) {
   }
 
   return (
-    <Layout title={`Order ${orderId}`}>
-      <Typography component="h1" variant="h1" className={classes.marginPages}>
-        Order {orderId}
+    <Layout title={`Pedido ${orderId}`}>
+      <Typography component="h1" variant="h1">
+        Código do Pedido: {orderId}
       </Typography>
       {loading ? (
         <CircularProgress />
       ) : error ? (
         <Typography className={classes.error}>{error}</Typography>
       ) : (
-        <Grid container spacing={1} className={classes.marginPages}>
+        <Grid container spacing={1}>
           <Grid item md={9} xs={12}>
             <Card className={classes.section}>
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Shipping Address
+                    Endereço de Entrega
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -181,10 +181,8 @@ function Order({ params }) {
                   {shippingAddress.country}
                 </ListItem>
                 <ListItem>
-                  Status:{' '}
-                  {isDelivered
-                    ? `delivered at ${deliveredAt}`
-                    : 'not delivered'}
+                  Status da Entrega:{' '}
+                  {isDelivered ? `Postado em ${deliveredAt}` : 'Não Postado'}
                 </ListItem>
               </List>
             </Card>
@@ -192,12 +190,13 @@ function Order({ params }) {
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Payment Method
+                    Método de Pagamento
                   </Typography>
                 </ListItem>
                 <ListItem>{paymentMethod}</ListItem>
                 <ListItem>
-                  Status: {isPaid ? `paid at ${paidAt}` : 'not paid'}
+                  Status de Pagamento:{' '}
+                  {isPaid ? `Pago em ${paidAt}` : 'Não Pago'}
                 </ListItem>
               </List>
             </Card>
@@ -205,7 +204,7 @@ function Order({ params }) {
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Order Items
+                    Seus Produtos
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -213,10 +212,10 @@ function Order({ params }) {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>Image</TableCell>
-                          <TableCell>Name</TableCell>
-                          <TableCell align="right">Quantity</TableCell>
-                          <TableCell align="right">Price</TableCell>
+                          <TableCell>Produto</TableCell>
+                          <TableCell>Nome</TableCell>
+                          <TableCell align="right">Quantidade</TableCell>
+                          <TableCell align="right">Valor</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -245,7 +244,7 @@ function Order({ params }) {
                               <Typography>{item.quantity}</Typography>
                             </TableCell>
                             <TableCell align="right">
-                              <Typography>${item.price}</Typography>
+                              <Typography>R$ {item.price}</Typography>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -256,39 +255,39 @@ function Order({ params }) {
               </List>
             </Card>
           </Grid>
-          <Grid item md={3} xs={12} className={classes.marginPages}>
+          <Grid item md={3} xs={12}>
             <Card className={classes.section}>
               <List>
                 <ListItem>
-                  <Typography variant="h2">Order Summary</Typography>
+                  <Typography variant="h2">Realizar Pagamento</Typography>
                 </ListItem>
                 <ListItem>
                   <Grid container>
                     <Grid item xs={6}>
-                      <Typography>Items:</Typography>
+                      <Typography>Valor dos Produtos:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right">${itemsPrice}</Typography>
+                      <Typography align="right">R$ {itemsPrice}</Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
                 <ListItem>
                   <Grid container>
                     <Grid item xs={6}>
-                      <Typography>Tax:</Typography>
+                      <Typography>Taxa:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right">${taxPrice}</Typography>
+                      <Typography align="right">R$ {taxPrice}</Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
                 <ListItem>
                   <Grid container>
                     <Grid item xs={6}>
-                      <Typography>Shipping:</Typography>
+                      <Typography>Frete:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right">${shippingPrice}</Typography>
+                      <Typography align="right">R$ {shippingPrice}</Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -301,7 +300,7 @@ function Order({ params }) {
                     </Grid>
                     <Grid item xs={6}>
                       <Typography align="right">
-                        <strong>${totalPrice}</strong>
+                        <strong>R$ {totalPrice}</strong>
                       </Typography>
                     </Grid>
                   </Grid>

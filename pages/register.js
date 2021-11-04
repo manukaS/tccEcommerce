@@ -39,7 +39,7 @@ export default function Register() {
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     closeSnackbar();
     if (password !== confirmPassword) {
-      enqueueSnackbar("Passwords Don't Match", { variant: 'error' });
+      enqueueSnackbar('Confira sua senha!', { variant: 'error' });
       return;
     }
     try {
@@ -59,7 +59,7 @@ export default function Register() {
     <Layout title="Register">
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Register
+          Cadastre-se
         </Typography>
         <List>
           <ListItem>
@@ -69,21 +69,21 @@ export default function Register() {
               defaultValue=""
               rules={{
                 required: true,
-                minLength: 2,
+                minLength: 3,
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="name"
-                  label="Name"
+                  label="Nome"
                   inputProps={{ type: 'name' }}
                   error={Boolean(errors.name)}
                   helperText={
                     errors.name
                       ? errors.name.type === 'minLength'
-                        ? 'Name lenght is more than 1'
-                        : 'Name is required'
+                        ? 'Seu nome deve conter mais que três caracteres!'
+                        : 'Informe seu Nome!'
                       : ''
                   }
                   {...field}
@@ -111,8 +111,8 @@ export default function Register() {
                   helperText={
                     errors.email
                       ? errors.email.type === 'pattern'
-                        ? 'Email is not valid'
-                        : 'Email is required'
+                        ? 'Seu email não é válido!'
+                        : 'Informe seu Email!'
                       : ''
                   }
                   {...field}
@@ -134,14 +134,14 @@ export default function Register() {
                   variant="outlined"
                   fullWidth
                   id="password"
-                  label="Password"
+                  label="Senha"
                   inputProps={{ type: 'password' }}
                   error={Boolean(errors.password)}
                   helperText={
                     errors.password
                       ? errors.password.type === 'minLLength'
-                        ? 'Password length is more than 5'
-                        : 'Password is required'
+                        ? 'Sua senha deve conter mais que cinco caracteres!'
+                        : 'Informe sua senha!'
                       : ''
                   }
                   {...field}
@@ -163,14 +163,14 @@ export default function Register() {
                   variant="outlined"
                   fullWidth
                   id="confirmPassword"
-                  label="Confirm Password"
+                  label="Confirmar Senha"
                   inputProps={{ type: 'password' }}
                   error={Boolean(errors.confirmPassword)}
                   helperText={
                     errors.confirmPassword
                       ? errors.confirmPassword.type === 'minLLength'
-                        ? 'Confirm Password length is more than 5'
-                        : 'Confirm Password is required'
+                        ? 'Sua senha deve conter mais que cinco caracteres!'
+                        : 'Confirme sua senha!'
                       : ''
                   }
                   {...field}
@@ -180,13 +180,13 @@ export default function Register() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Register
+              Cadastrar
             </Button>
           </ListItem>
           <ListItem>
-            Already have an account? &nbsp;
+            Já possui uma conta? &nbsp;
             <NextLink href={`/login?redirect=${redirect || '/'}`} passHref>
-              <Link>Login</Link>
+              <Link>Faça Login!</Link>
             </NextLink>
           </ListItem>
         </List>

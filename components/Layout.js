@@ -108,10 +108,10 @@ export default function Layout({ title, description, children }) {
                 <Link>
                   {cart.cartItems.length > 0 ? (
                     <Badge color="primary" badgeContent={cart.cartItems.length}>
-                      Cart
+                      Carrinho
                     </Badge>
                   ) : (
-                    'Cart'
+                    'Carrinho'
                   )}
                 </Link>
               </NextLink>
@@ -135,16 +135,18 @@ export default function Layout({ title, description, children }) {
                     <MenuItem
                       onClick={(e) => loginMenuCloseHandler(e, '/profile')}
                     >
-                      Profile
+                      Perfil
                     </MenuItem>
                     <MenuItem
                       onClick={(e) =>
                         loginMenuCloseHandler(e, '/order-history')
                       }
                     >
-                      Order History
+                      Histórico de Pedidos
                     </MenuItem>
-                    <MenuItem onClick={logoutClickHandler}>Logout</MenuItem>
+                    <MenuItem onClick={logoutClickHandler}>
+                      Desconectar
+                    </MenuItem>
                   </Menu>
                 </>
               ) : (

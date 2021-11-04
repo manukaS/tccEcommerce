@@ -87,18 +87,18 @@ function PlaceOrder() {
   };
 
   return (
-    <Layout title="Place Order">
+    <Layout title="Confirmar Pedido">
       <CheckoutWizard activeStep={3}></CheckoutWizard>
-      <Typography component="h1" variant="h1" className={classes.marginPages}>
-        Place Order
+      <Typography component="h1" variant="h1">
+        Confirmaçao de Compra
       </Typography>
-      <Grid container spacing={1} className={classes.marginPages}>
+      <Grid container spacing={1}>
         <Grid item md={9} xs={12}>
           <Card className={classes.section}>
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Shipping Address
+                  Endereço de Entrega
                 </Typography>
               </ListItem>
               <ListItem>
@@ -112,7 +112,7 @@ function PlaceOrder() {
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Payment Method
+                  Método de Pagamento
                 </Typography>
               </ListItem>
               <ListItem>{paymentMethod}</ListItem>
@@ -122,7 +122,7 @@ function PlaceOrder() {
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Order Items
+                  Seus Produtos
                 </Typography>
               </ListItem>
               <ListItem>
@@ -130,10 +130,10 @@ function PlaceOrder() {
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <TableCell>Image</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Quantity</TableCell>
-                        <TableCell align="right">Price</TableCell>
+                        <TableCell>Produto</TableCell>
+                        <TableCell>Nome</TableCell>
+                        <TableCell align="right">Quantidade</TableCell>
+                        <TableCell align="right">Valor</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -162,7 +162,7 @@ function PlaceOrder() {
                             <Typography>{item.quantity}</Typography>
                           </TableCell>
                           <TableCell align="right">
-                            <Typography>${item.price}</Typography>
+                            <Typography>R$ {item.price}</Typography>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -173,39 +173,39 @@ function PlaceOrder() {
             </List>
           </Card>
         </Grid>
-        <Grid item md={3} xs={12} className={classes.marginPages}>
+        <Grid item md={3} xs={12}>
           <Card className={classes.section}>
             <List>
               <ListItem>
-                <Typography variant="h2">Order Summary</Typography>
+                <Typography variant="h2">Confirmar Pedido</Typography>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>Items:</Typography>
+                    <Typography>Valor dos Produtos:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right">${itemsPrice}</Typography>
+                    <Typography align="right">R$ {itemsPrice}</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>Tax:</Typography>
+                    <Typography>Taxa:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right">${taxPrice}</Typography>
+                    <Typography align="right">R$ {taxPrice}</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>Shipping:</Typography>
+                    <Typography>Frete:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right">${shippingPrice}</Typography>
+                    <Typography align="right">R$ {shippingPrice}</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
@@ -218,7 +218,7 @@ function PlaceOrder() {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography align="right">
-                      <strong>${totalPrice}</strong>
+                      <strong>R$ {totalPrice}</strong>
                     </Typography>
                   </Grid>
                 </Grid>
@@ -230,7 +230,7 @@ function PlaceOrder() {
                   color="primary"
                   fullWidth
                 >
-                  Place Order
+                  Confirmar Pedido
                 </Button>
               </ListItem>
               {loading && (

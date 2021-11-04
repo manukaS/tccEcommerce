@@ -24,14 +24,14 @@ export default function ProductScreen(props) {
   const { product } = props;
   const classes = useStyles();
   if (!product) {
-    return <div>Product Not Found!</div>;
+    return <div>Produto não encontrado!</div>;
   }
   const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
+      window.alert('Este produto está fora de estoque!');
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -42,17 +42,13 @@ export default function ProductScreen(props) {
       <div className={classes.section}>
         <NextLink href="/" passHref>
           <Link>
-            <Typography
-              component="h2"
-              variant="h2"
-              className={classes.marginPages}
-            >
-              back to products
+            <Typography component="h2" variant="h2">
+              Voltar para a Loja
             </Typography>
           </Link>
         </NextLink>
       </div>
-      <Grid container spacing={1} className={classes.marginPages}>
+      <Grid container spacing={1}>
         <Grid item md={6} xs={12}>
           <Image
             src={product.image}
@@ -62,7 +58,7 @@ export default function ProductScreen(props) {
             layout="responsive"
           ></Image>
         </Grid>
-        <Grid item md={3} xs={12} className={classes.marginPages}>
+        <Grid item md={3} xs={12}>
           <List>
             <ListItem>
               <Typography component="h1" variant="h1">
@@ -71,39 +67,40 @@ export default function ProductScreen(props) {
             </ListItem>
             <ListItem>
               <Typography component="h2" variant="h2">
-                Category: {product.category}
+                Categoria: {product.category}
               </Typography>
             </ListItem>
             <ListItem>
               <Typography component="h2" variant="h2">
-                Brand: {product.brand}
+                Marca: {product.brand}
               </Typography>
             </ListItem>
             <ListItem>
               <Typography component="h2" variant="h2">
-                Rating: {product.rating} stars ({product.numReviews} reviews)
+                Avaliações: {product.rating} Estrelas ({product.numReviews}{' '}
+                avaliações)
               </Typography>
             </ListItem>
             <ListItem>
               <Typography component="h2" variant="h2">
-                Description: {product.description}
+                Descrição: {product.description}
               </Typography>
             </ListItem>
           </List>
         </Grid>
-        <Grid item md={3} xs={12} className={classes.marginPages}>
+        <Grid item md={3} xs={12}>
           <Card>
             <List>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
                     <Typography component="h2" variant="h2">
-                      Price
+                      Preço
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography component="h2" variant="h2">
-                      R${product.price}
+                      R$ {product.price}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -112,12 +109,12 @@ export default function ProductScreen(props) {
                 <Grid container>
                   <Grid item xs={6}>
                     <Typography component="h2" variant="h2">
-                      Status
+                      Status do Estoque
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography component="h2" variant="h2">
-                      {product.countInStock > 0 ? 'In Stock' : 'Unavailable'}
+                      {product.countInStock > 0 ? 'Disponível' : 'Indisponível'}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -130,7 +127,7 @@ export default function ProductScreen(props) {
                   onClick={addToCartHandler}
                 >
                   <Typography component="h2" variant="h2">
-                    Add to cart
+                    Adicionar ao Carrinho
                   </Typography>
                 </Button>
               </ListItem>

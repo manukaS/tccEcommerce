@@ -21,10 +21,10 @@ handler.put(async (req, res) => {
     };
     const paidOrder = await order.save();
     await db.disconnect();
-    res.send({ message: 'Order Paid', order: paidOrder });
+    res.send({ message: 'O Pedido foi Pago!', order: paidOrder });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Order Not Found' });
+    res.status(404).send({ message: 'Pedido não Encontrado!' });
   }
 });
 

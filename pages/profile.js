@@ -46,7 +46,7 @@ function Profile() {
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     closeSnackbar();
     if (password !== confirmPassword) {
-      enqueueSnackbar("Passwords Don't Match", { variant: 'error' });
+      enqueueSnackbar('Confira sua senha!', { variant: 'error' });
       return;
     }
     try {
@@ -61,26 +61,28 @@ function Profile() {
       );
       dispatch({ type: 'USER_LOGIN', payload: data });
       Cookies.set('userInfo', data);
-      enqueueSnackbar('Profile Updated Successfully', { variant: 'success' });
+      enqueueSnackbar('Seu perfil foi atualizado com sucesso!', {
+        variant: 'success',
+      });
     } catch (err) {
       enqueueSnackbar(getError(err), { variant: 'error' });
     }
   };
 
   return (
-    <Layout title="Profile">
+    <Layout title="Perfil">
       <Grid container spacing={1}>
         <Grid item md={3} xs={12}>
           <Card className={classes.section}>
             <List>
               <NextLink href="/profile" passHref>
                 <ListItem selected button component="a">
-                  <ListItemText primary="User Profile"></ListItemText>
+                  <ListItemText primary="Perfil"></ListItemText>
                 </ListItem>
               </NextLink>
               <NextLink href="/order-history" passHref>
                 <ListItem button component="a">
-                  <ListItemText primary="Order History"></ListItemText>
+                  <ListItemText primary="Histórico de Pedidos"></ListItemText>
                 </ListItem>
               </NextLink>
             </List>
@@ -91,7 +93,7 @@ function Profile() {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Profile
+                  Seus Dados
                 </Typography>
               </ListItem>
               <ListItem>
@@ -107,21 +109,21 @@ function Profile() {
                         defaultValue=""
                         rules={{
                           required: true,
-                          minLength: 2,
+                          minLength: 3,
                         }}
                         render={({ field }) => (
                           <TextField
                             variant="outlined"
                             fullWidth
                             id="name"
-                            label="Name"
+                            label="Nome"
                             inputProps={{ type: 'name' }}
                             error={Boolean(errors.name)}
                             helperText={
                               errors.name
                                 ? errors.name.type === 'minLength'
-                                  ? 'Name lenght is more than 1'
-                                  : 'Name is required'
+                                  ? 'Seu nome deve conter mais que três caracteres!'
+                                  : 'Informe seu Nome!'
                                 : ''
                             }
                             {...field}
@@ -149,8 +151,8 @@ function Profile() {
                             helperText={
                               errors.email
                                 ? errors.email.type === 'pattern'
-                                  ? 'Email is not valid'
-                                  : 'Email is required'
+                                  ? 'Seu email não é válido!'
+                                  : 'Informe seu Email!'
                                 : ''
                             }
                             {...field}
@@ -174,12 +176,12 @@ function Profile() {
                             variant="outlined"
                             fullWidth
                             id="password"
-                            label="Password"
+                            label="Senha"
                             inputProps={{ type: 'password' }}
                             error={Boolean(errors.password)}
                             helperText={
                               errors.password
-                                ? 'Password length is more than 5'
+                                ? 'Sua senha deve conter mais que cinco caracteres!'
                                 : ''
                             }
                             {...field}
@@ -196,19 +198,19 @@ function Profile() {
                           validate: (value) =>
                             value === '' ||
                             value.length > 5 ||
-                            'Confirm Password length is more than 5',
+                            'Sua senha deve conter mais que cinco caracteres!',
                         }}
                         render={({ field }) => (
                           <TextField
                             variant="outlined"
                             fullWidth
                             id="confirmPassword"
-                            label="Confirm Password"
+                            label="Confirmar Senha"
                             inputProps={{ type: 'password' }}
                             error={Boolean(errors.confirmPassword)}
                             helperText={
                               errors.password
-                                ? 'Confirm Password length is more than 5'
+                                ? 'Sua senha deve conter mais que cinco caracteres!'
                                 : ''
                             }
                             {...field}
@@ -223,7 +225,7 @@ function Profile() {
                         fullWidth
                         color="primary"
                       >
-                        Update
+                        Atualizar
                       </Button>
                     </ListItem>
                   </List>

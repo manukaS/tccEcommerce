@@ -63,19 +63,19 @@ function OrderHistory() {
     fetchOrders();
   }, []);
   return (
-    <Layout title="Order History">
+    <Layout title="Histórico de Pedidos">
       <Grid container spacing={1}>
         <Grid item md={3} xs={12}>
           <Card className={classes.section}>
             <List>
               <NextLink href="/profile" passHref>
                 <ListItem button component="a">
-                  <ListItemText primary="User Profile"></ListItemText>
+                  <ListItemText primary="Perfil"></ListItemText>
                 </ListItem>
               </NextLink>
               <NextLink href="/order-history" passHref>
                 <ListItem selected button component="a">
-                  <ListItemText primary="Order History"></ListItemText>
+                  <ListItemText primary="Histórico de Pedidos"></ListItemText>
                 </ListItem>
               </NextLink>
             </List>
@@ -86,7 +86,7 @@ function OrderHistory() {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Order History
+                  Histórico de Pedidos
                 </Typography>
               </ListItem>
               <ListItem>
@@ -99,12 +99,12 @@ function OrderHistory() {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>ID</TableCell>
-                          <TableCell>DATE</TableCell>
-                          <TableCell>TOTAL</TableCell>
-                          <TableCell>PAID</TableCell>
-                          <TableCell>DELIVERED</TableCell>
-                          <TableCell>ACTION</TableCell>
+                          <TableCell>Pedido</TableCell>
+                          <TableCell>Data</TableCell>
+                          <TableCell>Valor</TableCell>
+                          <TableCell>Pagamento</TableCell>
+                          <TableCell>Entrega</TableCell>
+                          <TableCell>Detalhes</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -115,17 +115,17 @@ function OrderHistory() {
                             <TableCell>R$ {order.totalPrice}</TableCell>
                             <TableCell>
                               {order.paidAt
-                                ? `Paid At ${order.paidAt}`
-                                : 'Not Paid'}
+                                ? `Pago em ${order.paidAt}`
+                                : 'Não Pago'}
                             </TableCell>
                             <TableCell>
                               {order.isDelivered
-                                ? `Delivered At ${order.isDelivered}`
-                                : 'Not Delivered'}
+                                ? `Postado em ${order.isDelivered}`
+                                : 'Não Postado'}
                             </TableCell>
                             <TableCell>
                               <NextLink href={`/order/${order._id}`} passHref>
-                                <Button variant="contained">Details</Button>
+                                <Button variant="contained">Detalhes</Button>
                               </NextLink>
                             </TableCell>
                           </TableRow>

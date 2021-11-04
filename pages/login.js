@@ -55,7 +55,7 @@ export default function Login() {
     <Layout title="Login">
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Login
+          Faça Login
         </Typography>
         <List>
           <ListItem>
@@ -78,8 +78,8 @@ export default function Login() {
                   helperText={
                     errors.email
                       ? errors.email.type === 'pattern'
-                        ? 'Email is not valid'
-                        : 'Email is required'
+                        ? 'Seu email não é válido!'
+                        : 'Informe seu Email!'
                       : ''
                   }
                   {...field}
@@ -101,14 +101,14 @@ export default function Login() {
                   variant="outlined"
                   fullWidth
                   id="password"
-                  label="Password"
+                  label="Senha"
                   inputProps={{ type: 'password' }}
                   error={Boolean(errors.password)}
                   helperText={
                     errors.password
                       ? errors.password.type === 'minLLength'
-                        ? 'Password length is more than 5'
-                        : 'Password is required'
+                        ? 'A senha deve conter mais que cinco caracteres!'
+                        : 'Informe sua Senha!'
                       : ''
                   }
                   {...field}
@@ -122,9 +122,9 @@ export default function Login() {
             </Button>
           </ListItem>
           <ListItem>
-            Don't have an account? &nbsp;
+            Não possui cadastro? &nbsp;
             <NextLink href={`/register?redirect=${redirect || '/'}`} passHref>
-              <Link>Register</Link>
+              <Link>Cadastre-se!</Link>
             </NextLink>
           </ListItem>
         </List>

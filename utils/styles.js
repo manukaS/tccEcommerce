@@ -78,10 +78,10 @@ const useStyles = makeStyles({
 
   //MARGIN PAGES
 
-  marginPages: {
+  /*marginPages: {
     marginLeft: '10%',
     marginRight: '10%',
-  },
+  },*/
 
   //CARDS
 
