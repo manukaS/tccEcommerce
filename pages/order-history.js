@@ -64,7 +64,13 @@ function OrderHistory() {
   }, []);
   return (
     <Layout title="Histórico de Pedidos">
-      <Grid container spacing={1}>
+      <Grid
+        container
+        spacing={1}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Grid item md={3} xs={12}>
           <Card className={classes.section}>
             <List>
@@ -99,33 +105,78 @@ function OrderHistory() {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>Pedido</TableCell>
-                          <TableCell>Data</TableCell>
-                          <TableCell>Valor</TableCell>
-                          <TableCell>Pagamento</TableCell>
-                          <TableCell>Entrega</TableCell>
-                          <TableCell>Detalhes</TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Pedido
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Data
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Valor
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Pagamento
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Entrega
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Detalhes
+                            </Typography>
+                          </TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {orders.map((order) => (
                           <TableRow key={order._id}>
-                            <TableCell>{order._id.substring(20, 24)}</TableCell>
-                            <TableCell>{order.createdAt}</TableCell>
-                            <TableCell>R$ {order.totalPrice}</TableCell>
                             <TableCell>
-                              {order.paidAt
-                                ? `Pago em ${order.paidAt}`
-                                : 'Não Pago'}
+                              <Typography component="h3" variant="h3">
+                                {order._id.substring(20, 24)}
+                              </Typography>
                             </TableCell>
                             <TableCell>
-                              {order.isDelivered
-                                ? `Postado em ${order.isDelivered}`
-                                : 'Não Postado'}
+                              <Typography component="h3" variant="h3">
+                                {order.createdAt}
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography component="h3" variant="h3">
+                                R$ {order.totalPrice}
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography component="h3" variant="h3">
+                                {order.paidAt
+                                  ? `Pago em ${order.paidAt}`
+                                  : 'Não Pago'}{' '}
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography component="h3" variant="h3">
+                                {order.isDelivered
+                                  ? `Postado em ${order.isDelivered}`
+                                  : 'Não Postado'}
+                              </Typography>
                             </TableCell>
                             <TableCell>
                               <NextLink href={`/order/${order._id}`} passHref>
-                                <Button variant="contained">Detalhes</Button>
+                                <Button variant="contained">
+                                  {' '}
+                                  <Typography component="h3" variant="h3">
+                                    Detalhes{' '}
+                                  </Typography>
+                                </Button>
                               </NextLink>
                             </TableCell>
                           </TableRow>

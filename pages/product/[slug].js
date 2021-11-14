@@ -39,100 +39,112 @@ export default function ProductScreen(props) {
   };
   return (
     <Layout title={product.name} description={product.description}>
-      <div className={classes.section}>
-        <NextLink href="/" passHref>
-          <Link>
-            <Typography component="h2" variant="h2">
-              Voltar para a Loja
-            </Typography>
-          </Link>
-        </NextLink>
-      </div>
-      <Grid container spacing={1}>
-        <Grid item md={6} xs={12}>
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={800}
-            height={600}
-            layout="responsive"
-          ></Image>
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <List>
-            <ListItem>
-              <Typography component="h1" variant="h1">
-                {product.name}
-              </Typography>
-            </ListItem>
-            <ListItem>
+      <Grid
+        container
+        space={1}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <div className={classes.section}>
+          <NextLink href="/" passHref>
+            <Link>
               <Typography component="h2" variant="h2">
-                Categoria: {product.category}
+                Voltar para a Loja
               </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h2" variant="h2">
-                Marca: {product.brand}
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h2" variant="h2">
-                Avaliações: {product.rating} Estrelas ({product.numReviews}{' '}
-                avaliações)
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h2" variant="h2">
-                Descrição: {product.description}
-              </Typography>
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <Card>
-            <List>
-              <ListItem>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Typography component="h2" variant="h2">
-                      Preço
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography component="h2" variant="h2">
-                      R$ {product.price}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </ListItem>
-              <ListItem>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Typography component="h2" variant="h2">
-                      Status do Estoque
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography component="h2" variant="h2">
-                      {product.countInStock > 0 ? 'Disponível' : 'Indisponível'}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </ListItem>
-              <ListItem>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  onClick={addToCartHandler}
-                >
-                  <Typography component="h2" variant="h2">
-                    Adicionar ao Carrinho
+            </Link>
+          </NextLink>
+        </div>
+        <Grid container spacing={1} className={classes.pad}>
+          <Grid item md={6} xs={12}>
+            <Image
+              className={classes.bordinha}
+              src={product.image}
+              alt={product.name}
+              width={800}
+              height={600}
+              layout="responsive"
+            ></Image>
+          </Grid>
+
+          <Grid item md={3} xs={12}>
+            <Grid item md={12} xs={12}>
+              <List>
+                <ListItem>
+                  <Typography component="h1" variant="h1">
+                    {product.name}
                   </Typography>
-                </Button>
-              </ListItem>
-            </List>
-          </Card>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Categoria: {product.category}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Marca: {product.brand}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Avaliações: {product.rating} Estrelas ({product.numReviews}{' '}
+                    avaliações)
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Descrição: {product.description}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Card>
+              <List>
+                <ListItem>
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <Typography component="h3" variant="h3">
+                        Preço
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography component="h3" variant="h3">
+                        R$ {product.price}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </ListItem>
+                <ListItem>
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <Typography component="h3" variant="h3">
+                        Status do Estoque
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography component="h3" variant="h3">
+                        {product.countInStock > 0
+                          ? 'Disponível'
+                          : 'Indisponível'}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </ListItem>
+                <ListItem>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    onClick={addToCartHandler}
+                  >
+                    <Typography component="h3" variant="h3">
+                      Adicionar ao Carrinho
+                    </Typography>
+                  </Button>
+                </ListItem>
+              </List>
+            </Card>
+          </Grid>
         </Grid>
       </Grid>
     </Layout>

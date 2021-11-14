@@ -19,6 +19,7 @@ import db from '../utils/db';
 import { Store } from '../utils/Store';
 import useStyles from '../utils/styles';
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
+import SendIcon from '@material-ui/icons/Send';
 
 export default function Home(props) {
   const router = useRouter();
@@ -108,7 +109,7 @@ export default function Home(props) {
           </div>
           <div className={classes.formMargin}>
             <Button type="submit" variant="contained" color="primary">
-              <Typography variant="h4">Enviar</Typography>
+              <SendIcon fontSize="medium" />
             </Button>
           </div>
         </form>

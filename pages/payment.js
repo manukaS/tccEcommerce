@@ -7,6 +7,7 @@ import CheckoutWizard from '../components/CheckoutWizard';
 import useStyles from '../utils/styles';
 import {
   Button,
+  Card,
   FormControl,
   FormControlLabel,
   List,
@@ -37,7 +38,7 @@ export default function Payment() {
     closeSnackbar();
     e.preventDefault();
     if (!paymentMethod) {
-      enqueueSnackbar('Seleciona o Método de Pagamento', { variant: 'error' });
+      enqueueSnackbar('Selecione o Método de Pagamento', { variant: 'error' });
     } else {
       dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethod });
       Cookies.set('paymentMethod', paymentMethod);
@@ -51,39 +52,51 @@ export default function Payment() {
         <Typography component="h1" variant="h1">
           Selecione o Método de Pagamento
         </Typography>
-        <List>
-          <ListItem>
-            <FormControl component="fieldset">
-              <RadioGroup
-                aria-label="Payment Method"
-                name="paymentMethod"
-                value={paymentMethod}
-                onChange={(e) => setPaymentMethod(e.target.value)}
+        <Card>
+          <List>
+            <ListItem>
+              <FormControl component="fieldset">
+                <RadioGroup
+                  aria-label="Payment Method"
+                  name="paymentMethod"
+                  value={paymentMethod}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                >
+                  <FormControlLabel
+                    label="PayPal"
+                    value="PayPal"
+                    control={<Radio />}
+                  ></FormControlLabel>
+                </RadioGroup>
+              </FormControl>
+            </ListItem>
+
+            <ListItem>
+              <Button
+                fullWidth
+                type="submit"
+                variant="contained"
+                color="primary"
               >
-                <FormControlLabel
-                  label="PayPal"
-                  value="PayPal"
-                  control={<Radio />}
-                ></FormControlLabel>
-              </RadioGroup>
-            </FormControl>
-          </ListItem>
-          <ListItem>
-            <Button fullWidth type="submit" variant="contained" color="primary">
-              Continuar
-            </Button>
-          </ListItem>
-          <ListItem>
-            <Button
-              fullWidth
-              type="button"
-              variant="contained"
-              onClick={() => router.push('/shipping')}
-            >
-              Voltar
-            </Button>
-          </ListItem>
-        </List>
+                <Typography variant="h3" component="h3">
+                  Continuar
+                </Typography>
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                fullWidth
+                type="button"
+                variant="contained"
+                onClick={() => router.push('/shipping')}
+              >
+                <Typography variant="h3" component="h3">
+                  Voltar
+                </Typography>
+              </Button>
+            </ListItem>
+          </List>
+        </Card>
       </form>
     </Layout>
   );

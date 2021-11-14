@@ -180,13 +180,22 @@ export default function Register() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Cadastrar
+              <Typography component="h3" variant="h3">
+                Cadastrar
+              </Typography>
             </Button>
           </ListItem>
           <ListItem>
-            Já possui uma conta? &nbsp;
+            <Typography component="h3" variant="h3">
+              Já possui uma conta?{' '}
+            </Typography>{' '}
+            &nbsp;
             <NextLink href={`/login?redirect=${redirect || '/'}`} passHref>
-              <Link>Faça Login!</Link>
+              <Link>
+                <Typography component="h3" variant="h3">
+                  Faça Login!{' '}
+                </Typography>
+              </Link>
             </NextLink>
           </ListItem>
         </List>

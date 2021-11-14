@@ -69,7 +69,7 @@ function Order({ params }) {
     paymentMethod,
     orderItems,
     itemsPrice,
-    taxPrice,
+    //taxPrice,
     shippingPrice,
     totalPrice,
     isPaid,
@@ -107,7 +107,7 @@ function Order({ params }) {
           type: 'resetOptions',
           value: {
             'client-id': clientId,
-            currency: 'USD',
+            currency: 'BRL',
           },
         });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
@@ -158,53 +158,72 @@ function Order({ params }) {
 
   return (
     <Layout title={`Pedido ${orderId}`}>
-      <Typography component="h1" variant="h1">
-        Código do Pedido: {orderId}
-      </Typography>
       {loading ? (
         <CircularProgress />
       ) : error ? (
         <Typography className={classes.error}>{error}</Typography>
       ) : (
-        <Grid container spacing={1}>
+        <Grid
+          container
+          spacing={1}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
           <Grid item md={9} xs={12}>
             <Card className={classes.section}>
               <List>
                 <ListItem>
-                  <Typography component="h2" variant="h2">
-                    Endereço de Entrega
+                  <Typography component="h1" variant="h1">
+                    Seu Pedido
                   </Typography>
                 </ListItem>
                 <ListItem>
-                  {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                  {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                  {shippingAddress.country}
-                </ListItem>
-                <ListItem>
-                  Status da Entrega:{' '}
-                  {isDelivered ? `Postado em ${deliveredAt}` : 'Não Postado'}
-                </ListItem>
-              </List>
-            </Card>
-            <Card className={classes.section}>
-              <List>
-                <ListItem>
-                  <Typography component="h2" variant="h2">
-                    Método de Pagamento
+                  <Typography component="h3" variant="h3">
+                    Código do Pedido: {orderId}
                   </Typography>
                 </ListItem>
-                <ListItem>{paymentMethod}</ListItem>
                 <ListItem>
-                  Status de Pagamento:{' '}
-                  {isPaid ? `Pago em ${paidAt}` : 'Não Pago'}
+                  <Typography component="h2" variant="h2">
+                    <strong>Endereço de Entrega</strong>
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    {shippingAddress.fullName}, {shippingAddress.address},{' '}
+                    {shippingAddress.state}, {shippingAddress.city},{' '}
+                    {shippingAddress.postalCode}, {shippingAddress.country}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Status da Entrega:{' '}
+                    {isDelivered ? `Postado em ${deliveredAt}` : 'Não Postado'}
+                  </Typography>
                 </ListItem>
               </List>
-            </Card>
-            <Card className={classes.section}>
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Seus Produtos
+                    <strong>Método de Pagamento</strong>
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    {paymentMethod}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3" variant="h3">
+                    Status de Pagamento:{' '}
+                    {isPaid ? `Pago em ${paidAt}` : 'Não Pago'}
+                  </Typography>
+                </ListItem>
+              </List>
+              <List>
+                <ListItem>
+                  <Typography component="h2" variant="h2">
+                    <strong>Seus Produtos</strong>
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -212,10 +231,26 @@ function Order({ params }) {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>Produto</TableCell>
-                          <TableCell>Nome</TableCell>
-                          <TableCell align="right">Quantidade</TableCell>
-                          <TableCell align="right">Valor</TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Produto
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography component="h3" variant="h3">
+                              Nome
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography component="h3" variant="h3">
+                              Quantidade
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography component="h3" variant="h3">
+                              Valor{' '}
+                            </Typography>
+                          </TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -225,6 +260,7 @@ function Order({ params }) {
                               <NextLink href={`/product/${item.slug}`} passHref>
                                 <Link>
                                   <Image
+                                    className={classes.bordinha}
                                     src={item.image}
                                     alt={item.name}
                                     width={50}
@@ -236,15 +272,21 @@ function Order({ params }) {
                             <TableCell>
                               <NextLink href={`/product/${item.slug}`} passHref>
                                 <Link>
-                                  <Typography>{item.name}</Typography>
+                                  <Typography component="h3" variant="h3">
+                                    {item.name}
+                                  </Typography>
                                 </Link>
                               </NextLink>
                             </TableCell>
                             <TableCell align="right">
-                              <Typography>{item.quantity}</Typography>
+                              <Typography component="h3" variant="h3">
+                                {item.quantity}
+                              </Typography>
                             </TableCell>
                             <TableCell align="right">
-                              <Typography>R$ {item.price}</Typography>
+                              <Typography component="h3" variant="h3">
+                                R$ {item.price}
+                              </Typography>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -254,24 +296,31 @@ function Order({ params }) {
                 </ListItem>
               </List>
             </Card>
-          </Grid>
-          <Grid item md={3} xs={12}>
-            <Card className={classes.section}>
-              <List>
-                <ListItem>
-                  <Typography variant="h2">Realizar Pagamento</Typography>
-                </ListItem>
-                <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>Valor dos Produtos:</Typography>
+            {/*<Card className={classes.section}></Card>
+            <Card className={classes.section}></Card>*/}{' '}
+            <Grid fullWidth>
+              <Card className={classes.section}>
+                <List>
+                  <ListItem>
+                    <Typography variant="h2">
+                      <strong>Realizar Pagamento</strong>
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography component="h3" variant="h3">
+                          Valor dos Produtos:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography align="right" component="h3" variant="h3">
+                          R$ {itemsPrice}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Typography align="right">R$ {itemsPrice}</Typography>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem>
+                  </ListItem>
+                  {/* <ListItem>
                   <Grid container>
                     <Grid item xs={6}>
                       <Typography>Taxa:</Typography>
@@ -280,48 +329,53 @@ function Order({ params }) {
                       <Typography align="right">R$ {taxPrice}</Typography>
                     </Grid>
                   </Grid>
-                </ListItem>
-                <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>Frete:</Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography align="right">R$ {shippingPrice}</Typography>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>
-                        <strong>Total:</strong>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography align="right">
-                        <strong>R$ {totalPrice}</strong>
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                {!isPaid && (
+                </ListItem>*/}
                   <ListItem>
-                    {isPending ? (
-                      <CircularProgress />
-                    ) : (
-                      <div className={classes.fullWidth}>
-                        <PayPalButtons
-                          createOrder={createOrder}
-                          onApprove={onApprove}
-                          onError={onError}
-                        ></PayPalButtons>
-                      </div>
-                    )}
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography component="h3" variant="h3">
+                          Frete:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography align="right" component="h3" variant="h3">
+                          R$ {shippingPrice}
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </ListItem>
-                )}
-              </List>
-            </Card>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography component="h3" variant="h3">
+                          <strong>Total:</strong>
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography align="right" component="h3" variant="h3">
+                          <strong>R$ {totalPrice}</strong>
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  {!isPaid && (
+                    <ListItem>
+                      {isPending ? (
+                        <CircularProgress />
+                      ) : (
+                        <div className={classes.fullWidth}>
+                          <PayPalButtons
+                            createOrder={createOrder}
+                            onApprove={onApprove}
+                            onError={onError}
+                          ></PayPalButtons>
+                        </div>
+                      )}
+                    </ListItem>
+                  )}
+                </List>
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       )}

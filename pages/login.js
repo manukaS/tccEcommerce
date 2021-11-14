@@ -118,13 +118,23 @@ export default function Login() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Login
+              <Typography component="h3" variant="h3">
+                Login
+              </Typography>
             </Button>
           </ListItem>
           <ListItem>
-            Não possui cadastro? &nbsp;
+            <Typography component="h3" variant="h3">
+              Não possui cadastro?
+            </Typography>
+            &nbsp;
             <NextLink href={`/register?redirect=${redirect || '/'}`} passHref>
-              <Link>Cadastre-se!</Link>
+              <Link>
+                {' '}
+                <Typography component="h3" variant="h3">
+                  Cadastre-se!{' '}
+                </Typography>
+              </Link>
             </NextLink>
           </ListItem>
         </List>

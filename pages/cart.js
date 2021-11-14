@@ -53,108 +53,158 @@ function CartScreen() {
 
   return (
     <Layout title=" Carrinho de Compras">
-      <Typography component="h1" variant="h1">
-        Carrinho de Compras
-      </Typography>
-      {cartItems.length === 0 ? (
-        <div>
-          Seu carrinho está vazio!<br></br>
-          <NextLink href="/" passHref>
-            <Link>Voltar às compras!</Link>
-          </NextLink>
-        </div>
-      ) : (
-        <Grid container space={1}>
-          <Grid item md={9} xs={12}>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Produto</TableCell>
-                    <TableCell>Nome</TableCell>
-                    <TableCell aligh="right">Quantidade</TableCell>
-                    <TableCell aligh="right">Preço</TableCell>
-                    <TableCell aligh="right">Remover</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {cartItems.map((item) => (
-                    <TableRow key={item._id}>
+      <Grid
+        container
+        space={1}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Typography component="h1" variant="h1">
+          Carrinho de Compras
+        </Typography>
+        {cartItems.length === 0 ? (
+          <div>
+            <NextLink href="/" passHref>
+              <Link>
+                <Typography component="h3" variant="h3">
+                  Voltar às compras!
+                </Typography>
+              </Link>
+            </NextLink>
+          </div>
+        ) : (
+          <Grid
+            container
+            space={1}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Grid item md={9} xs={12} className={classes.cartinho}>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
                       <TableCell>
-                        <NextLink href={`/product/${item.slug}`} passHref>
-                          <Link>
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              width={50}
-                              height={50}
-                            ></Image>
-                          </Link>
-                        </NextLink>
+                        <Typography component="h3" variant="h3">
+                          Produto{' '}
+                        </Typography>
                       </TableCell>
-
                       <TableCell>
-                        <NextLink href={`/product/${item.slug}`} passHref>
-                          <Link>
-                            <Typography>{item.name}</Typography>
-                          </Link>
-                        </NextLink>
+                        <Typography component="h3" variant="h3">
+                          Nome{' '}
+                        </Typography>
                       </TableCell>
                       <TableCell aligh="right">
-                        <Select
-                          value={item.quantity}
-                          onChange={(e) =>
-                            updateCartHandler(item, e.target.value)
-                          }
-                        >
-                          {[...Array(item.countInStock).keys()].map((x) => (
-                            <MenuItem key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </MenuItem>
-                          ))}
-                        </Select>
+                        <Typography component="h3" variant="h3">
+                          Quantidade{' '}
+                        </Typography>
                       </TableCell>
-                      <TableCell aligh="right">R$ {item.price}</TableCell>
                       <TableCell aligh="right">
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => removeItemHandler(item)}
-                        >
-                          <DeleteForeverOutlined fontSize="medium" />
-                        </Button>
+                        <Typography component="h3" variant="h3">
+                          Preço{' '}
+                        </Typography>
+                      </TableCell>
+                      <TableCell aligh="right">
+                        <Typography component="h3" variant="h3">
+                          Remover{' '}
+                        </Typography>
                       </TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {cartItems.map((item) => (
+                      <TableRow key={item._id}>
+                        <TableCell>
+                          <NextLink href={`/product/${item.slug}`} passHref>
+                            <Link>
+                              <Image
+                                className={classes.bordinha}
+                                src={item.image}
+                                alt={item.name}
+                                width={50}
+                                height={50}
+                              ></Image>
+                            </Link>
+                          </NextLink>
+                        </TableCell>
+
+                        <TableCell>
+                          <NextLink href={`/product/${item.slug}`} passHref>
+                            <Link>
+                              <Typography component="h3" variant="h3">
+                                {item.name}
+                              </Typography>
+                            </Link>
+                          </NextLink>
+                        </TableCell>
+                        <TableCell aligh="right">
+                          <Select
+                            value={item.quantity}
+                            onChange={(e) =>
+                              updateCartHandler(item, e.target.value)
+                            }
+                          >
+                            {[...Array(item.countInStock).keys()].map((x) => (
+                              <MenuItem key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </TableCell>
+                        <TableCell aligh="right">
+                          <Typography component="h3" variant="h3">
+                            R$ {item.price}
+                          </Typography>
+                        </TableCell>
+                        <TableCell aligh="right">
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => removeItemHandler(item)}
+                          >
+                            <DeleteForeverOutlined fontSize="medium" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <Grid>
+                <Card className={classes.section}>
+                  <List>
+                    <ListItem>
+                      <Typography variant="h2" component="h2">
+                        Subtotal (
+                        {cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+                        Produtos): R$
+                        {cartItems.reduce(
+                          (a, c) => a + c.quantity * c.price,
+                          0
+                        )}
+                      </Typography>
+                    </ListItem>
+                    <ListItem>
+                      <Button
+                        onClick={checkoutHandler}
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                      >
+                        <Typography variant="h3" component="h3">
+                          Finalizar Compra
+                        </Typography>
+                      </Button>
+                    </ListItem>
+                  </List>
+                </Card>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid md={3} xs={12} className={classes.marginPages}>
-            <Card>
-              <List>
-                <ListItem>
-                  <Typography variant="h2">
-                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    Produtos): $
-                    {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Button
-                    onClick={checkoutHandler}
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                  >
-                    Finalizar Compra
-                  </Button>
-                </ListItem>
-              </List>
-            </Card>
-          </Grid>
-        </Grid>
-      )}
+        )}
+      </Grid>
     </Layout>
   );
 }

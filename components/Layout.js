@@ -47,7 +47,7 @@ export default function Layout({ title, description, children }) {
       h4: {
         fontFamily: 'Poppins',
         fontSize: '1rem',
-        fontWeight: 500,
+        fontWeight: 400,
       },
     },
     palette: {
@@ -160,7 +160,7 @@ export default function Layout({ title, description, children }) {
         <Container className={classes.main}>{children}</Container>
         <hr color="#64E294" className={classes.lineFooter} />
         <footer>
-          <Typography className={classes.footer}>
+          <Typography component="h3" variant="h3" className={classes.footer}>
             © 2021 manuka.Store
           </Typography>
         </footer>

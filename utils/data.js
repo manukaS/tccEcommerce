@@ -21,7 +21,7 @@ const data = {
       slug: 'black-shirt',
       category: 'Camisas',
       image: '/images/shirt1.jpg',
-      price: 300,
+      price: 1,
       brand: 'Nike',
       rating: 5,
       numReviews: 10,

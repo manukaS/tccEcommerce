@@ -4,6 +4,7 @@ import {
   ListItem,
   TextField,
   Typography,
+  Card,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react';
@@ -33,20 +34,29 @@ export default function Shipping() {
     }
     setValue('fullName', shippingAddress.fullName);
     setValue('address', shippingAddress.address);
+    setValue('state', shippingAddress.state);
     setValue('city', shippingAddress.city);
     setValue('postalCode', shippingAddress.postalCode);
     setValue('country', shippingAddress.country);
   }, []);
 
   const classes = useStyles();
-  const submitHandler = ({ fullName, address, city, postalCode, country }) => {
+  const submitHandler = ({
+    fullName,
+    address,
+    state,
+    city,
+    postalCode,
+    country,
+  }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
-      payload: { fullName, address, city, postalCode, country },
+      payload: { fullName, address, state, city, postalCode, country },
     });
     Cookies.set('shippingAddress', {
       fullName,
       address,
+      state,
       city,
       postalCode,
       country,
@@ -56,10 +66,12 @@ export default function Shipping() {
   return (
     <Layout title="Endereço de Entrega">
       <CheckoutWizard activeStep={1} />
+
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
           Dados para Entrega
         </Typography>
+
         <List>
           <ListItem>
             <Controller
@@ -110,6 +122,34 @@ export default function Shipping() {
                       ? errors.address.type === 'minLength'
                         ? 'Deve conter mais que dois caracteres!'
                         : 'Informe seu Endereço!'
+                      : ''
+                  }
+                  {...field}
+                ></TextField>
+              )}
+            ></Controller>
+          </ListItem>
+          <ListItem>
+            <Controller
+              name="state"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: true,
+                minLength: 2,
+              }}
+              render={({ field }) => (
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="state"
+                  label="Estado"
+                  error={Boolean(errors.state)}
+                  helperText={
+                    errors.state
+                      ? errors.state.type === 'minLength'
+                        ? 'Deve conter dois caracteres ou mais!'
+                        : 'Informe seu Estado!'
                       : ''
                   }
                   {...field}
@@ -203,7 +243,9 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Continuar
+              <Typography variant="h3" component="h3">
+                Continuar
+              </Typography>
             </Button>
           </ListItem>
         </List>

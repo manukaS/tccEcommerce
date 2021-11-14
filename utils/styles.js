@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   footer: {
     textAlign: 'center',
     color: '#d3d3d3',
-    minHeight: '15vh',
+    minHeight: '45vh',
     backgroundColor: 'black',
     padding: '10px',
   },
@@ -46,13 +46,14 @@ const useStyles = makeStyles({
   section: {
     marginTop: 10,
     marginBottom: 10,
+    marginLeft: '10px',
   },
 
   //FORM LOGIN/REGISTER/SHIPPING ADDRESS
 
   form: {
     width: '100%',
-    maxWidth: 800,
+    maxWidth: 500,
     margin: '0 auto',
   },
 
@@ -88,7 +89,7 @@ const useStyles = makeStyles({
   marginCards: {
     marginLeft: '10%',
     marginRight: '10%',
-    marginTop: '-14.5rem',
+    marginTop: '-20rem',
   },
 
   align: {
@@ -113,7 +114,7 @@ const useStyles = makeStyles({
 
   ourProducts: {
     backgroundColor: '#64E294',
-    minHeight: '35vh',
+    minHeight: '45vh',
   },
 
   ourProductsText: {
@@ -153,6 +154,23 @@ const useStyles = makeStyles({
   //PAYPAL BUTTONS
   fullWidth: {
     width: '100%',
+    alignContent: 'center',
+  },
+
+  pad: {
+    padding: '5px',
+  },
+
+  cartinho: {
+    padding: '5px',
+  },
+
+  bordinha: {
+    borderRadius: '8px',
+  },
+
+  margem: {
+    marginTop: '10px',
   },
 });
 

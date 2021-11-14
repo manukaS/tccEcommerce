@@ -71,7 +71,13 @@ function Profile() {
 
   return (
     <Layout title="Perfil">
-      <Grid container spacing={1}>
+      <Grid
+        container
+        spacing={1}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Grid item md={3} xs={12}>
           <Card className={classes.section}>
             <List>
@@ -93,7 +99,7 @@ function Profile() {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Seus Dados
+                  Alterar seus Dados
                 </Typography>
               </ListItem>
               <ListItem>
@@ -225,7 +231,9 @@ function Profile() {
                         fullWidth
                         color="primary"
                       >
-                        Atualizar
+                        <Typography component="h3" variant="h3">
+                          Atualizar
+                        </Typography>
                       </Button>
                     </ListItem>
                   </List>
